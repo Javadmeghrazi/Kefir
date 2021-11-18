@@ -7,7 +7,7 @@ wa = 1
 gl_0 = 51
 gr = 0
 mu = 0
-mi = 1
+mi = 0
 gen = 1000
 
 #t = seq(0, gen, length.out = 1000)
@@ -99,9 +99,14 @@ for (i in 2:gen){
           mig_mat [j-1,j] = allele_f[j]*(1-mean_allele_f[i-1])
         }
     }
-  mass [,i]= Growth_mat %*% selection_mat %*% drift_mut_mat %*% (mig_mat %^% mi) %*% mass [,i-1]
+  mig_mat_final = diag (gl)
+  for (k in 1:mi){
+    mig_mat_final = mig_mat_final %*% mig_mat
+  }
+  mass [,i]= Growth_mat %*% selection_mat %*% drift_mut_mat %*% mig_mat_final %*% mass [,i-1]
   freq [,i]= 100* mass [,i]/ sum(mass[,i])
   mean_allele_f[i] = sum (freq[,i]*allele_f[])/gl
+
 }
 plot (allele_f,freq[,1000])
 

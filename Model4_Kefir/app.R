@@ -1,56 +1,59 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+#Javad's Shiny App
+#packages
 library(shiny)
 library(tidyverse)
-
+matrix_exp <- function(mat,n){
+  if(!is.matrix(mat) | (nrow(mat)!=ncol(mat)) | n <0){
+    return(0)
+  }
+  if(n == 0){
+    return(diag(nrow(mat)))
+  }
+  matnew <- diag(nrow(mat))
+  for(i in 1:n){
+    matnew <- matnew %*% mat
+  }
+  matnew
+}
 # Define UI for application that Model_4 which shows spread of a mutation in kefir community. 
 ui <- fluidPage(
-    headerPanel = headerPanel("BIOL336: Haploid model of selection"),
-    # Application title
-    titlePanel("Model_4"),
-
-    # Sidebar with a slider input for number of bins 
+  headerPanel = headerPanel("BIOL336: Haploid model of selection"),
+  # Application title
+  titlePanel("Model_4"),
+  # Sidebar with a slider input for number of bins 
   
-    sidebarLayout(
-      sidebarPanel(
-          
-            HTML("<p style='font-size:14px'><B>Frequency of allele A over time (p).</B>"),
-            
-            numericInput(inputId = "gl", label = "Grain levels", value = 101, 
-                        min = 2, max = 200, step = 1),
-            numericInput(inputId = "wa", label = "wa", value = 1, 
-                        min = 0, max = 2, step = 0.01),
-            numericInput(inputId = "gl_0", label = "Initial state (grain level)", value = 2, 
-                        min = 0, max = 200, step = 1),
-            numericInput(inputId = "gr", label = "Max grain growth rate change", value = 0, 
-                        min =-2 , max = 2, step = 0.01),
-            numericInput(inputId = "mu", label = "mutation rate", value = 0.001, 
-                        min = 0, max = 0.01, step = 0.0001),
-            numericInput(inputId = "mi", label = "migration rate", value = 1, 
-                        min = 0, max = 20, step = 1),
-            numericInput(inputId = "gen", label = "number of generations", value = 100, 
-                        min = 1, max = 1000, step = 10)
+  sidebarLayout(
+    sidebarPanel(
+      
+      HTML("<p style='font-size:14px'><B>Frequency of allele A over time (p).</B>"),
+      
+      numericInput(inputId = "gl", label = "Grain levels", value = 101, 
+                   min = 2, max = 200, step = 1),
+      numericInput(inputId = "wa", label = "wa", value = 1, 
+                   min = 0, max = 2, step = 0.01),
+      numericInput(inputId = "gl_0", label = "Initial state (grain level)", value = 2, 
+                   min = 0, max = 200, step = 1),
+      numericInput(inputId = "gr", label = "Max grain growth rate change", value = 0, 
+                   min =-2 , max = 2, step = 0.01),
+      numericInput(inputId = "mu", label = "mutation rate", value = 0.001, 
+                   min = 0, max = 0.01, step = 0.0001),
+      numericInput(inputId = "mi", label = "migration rate", value = 1, 
+                   min = 0, max = 20, step = 1),
+      numericInput(inputId = "gen", label = "number of generations", value = 100, 
+                   min = 1, max = 1000, step = 10)
+      
+    ),
     
-      ),
-    
-      mainPanel =  mainPanel(
-          plotOutput(outputId = 'viz')
-      )
+    mainPanel =  mainPanel(
+      plotOutput(outputId = 'viz')
+    )
+  )
 )
-)
-
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   
   output$viz <- renderPlot({
-   #parameters
+    #parameters
     gl = input$gl
     wa = input$wa
     gl_0 = input$gl_0 
@@ -148,7 +151,7 @@ server <- function(input, output) {
           mig_mat [j-1,j] = allele_f[j]*(1-mean_allele_f[i-1])
         }
       }
-      mass [,i]= Growth_mat %*% selection_mat %*% drift_mut_mat %*% (mig_mat %^% mi) %*% mass [,i-1]
+      mass [,i]= Growth_mat %*% selection_mat %*% drift_mut_mat %*% (matrix_exp(mig_mat,mi)) %*% mass [,i-1]
       freq [,i]= 100* mass [,i]/ sum(mass[,i])
       mean_allele_f[i] = sum (freq[,i]*allele_f[])/gl
     }
@@ -156,6 +159,5 @@ server <- function(input, output) {
     plot (allele_f,freq[,gen])
   })
 } 
-
 # Run the application 
 shinyApp(ui = ui, server = server)
