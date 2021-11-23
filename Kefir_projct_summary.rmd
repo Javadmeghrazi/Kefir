@@ -1,0 +1,102 @@
+---
+title: "Kefir project summary"
+author: "Javad"
+date: "11/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+title: "Kefir: Unifying the ecology and evolution"
+author: "Javad Meghrazi"
+date: "10/19/2021"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+bibliography: references.bib
+---
+## What I know from Kefir
+### What is Kefir
+kfir is a agreggation of multiple bacteria and yeast species. The community forms grains which act as a 'Super Organism' and bear different members of the community. 
+When you put grains into  milk different species are sequentially realeased from grains into the milk and ferment it together. None of the species is able to do the process independent of the others with such efficiency.  
+### Grains: 
+![](https://i.imgur.com/nkd4v6t.png) 
+
+Figure 1: Grain matrix is made from Kefiran which is a polysacharide of Glucose and Galactose which is usually (or always?) produced by Lactpbacilus Kefiranofaciens.  
+#### spacial structure of grains
+![](https://i.imgur.com/40RyUZB.png)
+
+Figure 2: It seems that there is a spacial structure in grains. There are some yeast reach centers (@blashe et al. 2021) and different bacteria are present in different locations in relation to yeast (Rattray and O'connel 2022). It's still a question for me if the grain has any macro-scale spacial structure both Rattray and O'connel (2022)(It's a chapeter. I should check the original paper) claimed that yeasts and LABs are mostly found in the middle of the grains, while other biofilm-forming species like acetobacters are mostly found on the surface of grains.
+
+#### Formation of new grains
+It's still not clear for me but I can think of two different scenarios: 
+1- Grains undergo budding. In this scenario it's expected that parts of the grain which are doing better (converting food to biomass faster) grow more that other parts of the grain.  
+* This scenario implies a selection pressure for staying in the grain? or Kinship can address this?  
+
+2- but Rattray and O'connel (2022) suggested that first yeasts and LABS form some seeds and then other biofilm forming species can form some layers on the top of that. 
+* In this scenario the selection pressure would be for leaving the grain? eventhough I guess the reality is a combination of both scenarios and if the chance of ending up in a grain after living the original grain are low (or in a specific medium range) the dynamics would be really interesting.  
+
+
+
+### Microbial composition of grains (to be completed)
+Grains from different origins usually show very diverse compositions 
+* One interesting question is to investigate if there is any meaningful phylogenetic relationship between grains obtained from different origins. The phylogeny could be investigated both at taxonomic and functional level. 
+### Dynamics of community in milk
+After placing Kefir in milk, different bacteria and yeast are sequentially released into the liquid. @Blasche et al. (2021) suggested that pH, citrat and different aminoacids are important environmental factors that influence the sequential growth of bacteria in the milk.
+![](https://i.imgur.com/Lc6wNRl.png)  
+Figure 3: As you can see, relative abundance of microorganisms in the milk is substantially different from the grains. 
+
+### Interactions of different species
+#### Yeasts and Lactic Acid Bacteria (LABs)
+When yeasts (S.cerevisiae in the reference) are placed in a a nitrogen rich environment, they start secreting different amino acids. Also we know that most of the LABs are auxotrophic for many aminoacids and that's why association of yeasts and LABs is widespread in nature (in gut microbiome, degrading body of dead animals and ...). On the other hand, yeasts are not able to degrade lactose but many specise of LABs can do it(@Ponomarova et al. 2017; @Nejati et al. 2020). It's not clear if these species are evolved in kefir to better support each other's growth, but there are studies which have shown that adaptive laboratory experiments (ALE) on co-cultures of yeast and LABs can result in evolution of higher secretion of costly metabolics if there is some sort of spacial structure in the system (not shaking)(@Konstantindis et al. 2021)   
+#### Yeasts and acetic acid bacteria (AABs)
+#### AABs and LABs
+
+
+
+
+## Questions that I'm interested in  
+![](https://i.imgur.com/lbx963Q.png)
+
+[Link to the mental model](https://lucid.app/lucidchart/46eeb6a7-3580-425e-9ef0-fe65723eceef/edit?invitationId=inv_97a08e9c-5b56-4c61-bd55-fa2395b9fed5)
+### Game theory
+### Community dynamics
+### De-novo synthesis of kefir and modifying Kefir by ALE
+No one has reported de-novo construction of kefir, except one reference () where they pour milk in goat bags and shake it hourly for 12 weeks. then a biofilm forms on the walls of the bag. If place the biofilm in new milk, something like kefir grains form. It was first like witchcraft for me, but when I read '' it made much more sense. In order to conduct a community directed evolution, time should be given to communities to allow them reach stable composition. Then composition is more heritable can be subject to directed evolution. Shaking plays the role of generating variation among communities. Another interesting outcome of this paper is that these evolved communities are resistant to   
+### Evolution of Kefir
+#### Model 4
+the problem wih model 4: 
+1- How to incorporate the combined effect of mutation and selection on the last columns.   
+2- Binning the drift matrix   
+3- Adding the effect of migration  
+4- Adding a birth-death model option: assuming one species is limiting the growh of the grain and then assuming (pattern of evolution would be different in the limiting species vs. othters)(I think the concept of limiting steps is important and has other implocations on yeast evolution and evolution of everything)  
+5- are non-zero values in selection matrix problemaic?
+6- why distribution approches zero when there is no selection?
+7- try to don't use %/% and %%. these are bulshit
+8- there is a weird problem; mean_allele_f declines slightly in transition between the first and second generation. when there is migration same pattern is observed between other generations. Maybe it's because of the Floating error problem? but shouldn't be supper important when there are other forces I guess. 
+* It's important that how a cooperative mutation rises in frequency in population (specifically if individuals keep some of the recourse for themselves? but that's not like cooperation that's like commensalism). What is probably more important is why cheaters don't rise and dominate the community. 
+## Interesting experiments to do on Kefir
+
+## Interesting related papers
+## Interesting things for myself
+### Society
+There are two ways to successfully maintain a cooperative community(which is equivalent of multi-cellular organisms):  
+1- Make everyone be and think like eachother (like animals)  
+2- Like kefir (combining cooperation and competition + spacial structure (locality) + no free niche)
+### Kefir and gut microbiome
+There are interesting similarity between kefir evolution and gut microbiome evolution. Both are units of community which are evolving in relation to their host?(King et al. 2021)
+### Kefir and Rapid evolution
+### A zoo in the middle of a jungle 
+Can we establish centers to maintain biodiversity and introduce different species into the exosystem in different times of the year?  
+Do biodiversity hotspots affect the dynamics of neighbor ecosystems?  
+### Inhabiting other planets
+If one they human is going to introduce life to other planets, I think a strategy like what kefir takes can be very beneficial 
+### Kefir and Metabolic theory of ecology
+Kefir is a great system to test predictions of metabolic theory of ecology.
+## Meetings with Sally
+## Feedback from others
+## References

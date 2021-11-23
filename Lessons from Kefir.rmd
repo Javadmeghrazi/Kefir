@@ -1,0 +1,98 @@
+---
+title: "Lessons from Kefir"
+author: "Javad"
+date: "11/22/2021"
+output: html_document
+email: "meghrazi@zoology.ubc.ca"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Introduction
+Cooperation is a widespread phenomena in nature. Sometimes all participants of cooperation are directly benefited from cooperation, but sometimes the benefits are indirect, like when there is a benefit for the group (Individual-group conflict). In both cases, specifically the latter, it is not clear that how the cooperation has evolved. Generally, group selection is assumed to be an unimportant phenomena (?) and evolution of those traits are explained by mechanisms that relate the fitness of the individual to the trait. I want to argue that the role of group selection is underestimated. By developing a mathematical framework to account for group selection in Kefir, I want to show under what circumstances group selection is an important evolutionary force and what predictions it makes about the evolution of cooperation.
+
+## Kefir
+Kefir is a microbial community, traditionally used to ferment milk into diary. Kefir grains are self-sustaining reproductive units of the community. Between 30-50 species of lactic acid bacteria (LABs), yeasts and Acetic acid bacteria stably coexist in Kefir grains. When Kefir grain is placed into the milk, different bacteria sequentially release into the milk and by fermenting the milk, facilitate the growth of other members of the community. After end of the fermentation, kefir grains are sieved and placed into new milk.
+
+### Kefir, the superorganism
+When you look at the kefir grain it looks like a single organism, but it's actually an ecosystem. When we transfer Kefir grains into new milk, we are actually selecting for the bacteria that are in the grain and not in the milk. From another point of view, we can think of kefir as a multicellular entity with the bacteria in the milk as Somatic cells and the bacteria in the grains as Germline. Though it is not really clear whether bacteria in the milk are helping the growth of bacteria in the grains. Another alternative explanation is that even though group selection favors individuals who stay in the grain, maybe strength of it is not enough to bring the trait of staying in the grain into fixation, Or maybe the form that goes into milk will be produced by mutation or ut could be inevitable. 
+
+### Kefir, Lacobacilus kefiranofaciens and it's gut microbiome
+Lactobacillus kefiranofaciens comprises 95% of individuals in the grain (it's based on genomic studies, transcriptomics studies may be needed to investigate activity of the cells, read next section). Though other species have comparable frequencies in he milk but it's the grains that are transferred to the next generation. In these circumstances, we can take the view that Kefir is a multicellular L.Kefiranofaciens which is accompanied by some microbes, like the human and human gut microbiome relationship. Keep in mind that it's quite possible that majority of L.kefiranofaciens in the middle of the grain is inactive and it's the surface microbiome of kefir which determines microbial composition of milk. There are reports that AABs are usually found on the surface. 
+
+### Kefir, a growing biofilm which form a biovolume (like tumors)
+Another view is that kefir is just a stable biofilm which grows in the third dimension. Though in the areas further from the surface usually all bacteria become inactivated except the matrix producer (why?). Even though things might be a little it different in this view, Kefir still remains an evolvable entity. Furthermore, this hypothesis predicts that community composition of the grain should change as the grain becomes larger (lower surface to volume ratio) 
+
+## Description of the model
+### Simpson's paradox and it's resolution by random events. 
+
+### predictions of the model
+Important parameters:
+1- cost to the individual
+*** 2- benefit to the group
+3- number of individuals in the group (is it important?)
+*** 4- number of birth/death per group selection
+5- migration 
+6- mutation
+
+### Can you develop a model that has the same process across 3 levels? (release the assumption of constant community composition)
+
+##Discussion
+### Spatial stability is a prerequisite (at least to some level )
+### Modular growth and group selection
+When there is a modular growth in a system, group selection is always taking place. By a modular system, I mean a system who doesn't have separate reproductive germ lines. The most modular organism would be something like kefir or a biofilm. Do we really call a biofilm a multicellular organism? I think we should because there is some form group selection in it. 
+### Major stakeholder hypothesis
+Assume that you are a major stakeholder of a company, would you spend a few hours outside the normal working hours to improve performance of your company? of course yes! Now assume that you are a low-level worker in the same company. Would you do anything for the benefit of company? probably not, Unless you have to do that in order to get paid or that may cause you a raise in salary. If you could achieve a better position in the company by bullying your coworkers (which results in the cost of the group), would you do that? probably yes! Even though they have an impact on the success of the company (which results in their persistent income), but first, the effect of a single worker on the success of company is negligible and second, the company crash rate is very slow and it's quite common that a worker never face one. Stakeholders definitely design the company in a way that try to maximize worker's efficiency and reduce conflict among them (by modularity? / stakeholders should design a different evolutionary pass for the workers? like domestication?) 
+
+### Stakeholder's conflict hypothesis (model is not suitable to investigate this at the moment)
+When there are multiple stakeholders, there would be a competition between stakeholders to increase their ownership on the company at the same time. But if the number of stakeholders is low and they have (even/uneven shares) their behavior reaches an evolutionary equilibrium. Maybe always one partner become dominant during the long-term (evolution of endosymbiosis). One solution might be to somehow making the share ratio of different partners constant by division of labor or making one type dependent on the other one. this is another level of group selection. groups that have constant ratios have better fitness. 
+### Independency sacrifization hypothesis
+read "L. kefiranofaciens evolves cooperative behaviors but not smaller mmebers of community". It can explain a lot in the evolution of genome. why genes should lose their self-reproduction ability to be able to be incorporated in a genome. Cell loses ability to cellular respiration.
+### Implications
+
+#### L. kefiranofaciens evolves cooperative behaviors but not smaller mmebers of community
+In kefir, the major stakeholders is L.kefiranofaciens and maybe a few other members to some level. Based on the large effect of L.kefiranofaciens on the group growth, it's expected that it evolves traits that are costly for the individuals but beneficial for the group. On the other hand other (less important) members evolve to maximize their individual fitness. (or increase frequency of that species in the grain?). Whether L.kefiranofaciens face any success in aligning evolution of other members with the growth of the grain is an open question. Also it's a question that what sort of adaptations in L.kefiranofaciens may result in this. Maybe producing a matrix? or division of labor (do not doing some important functions and make the growth of the grain reliant on the smaller members (Independency sacrifization phenomena). why many multi-cellular forms are unable of doing some proceces and totally depend on their symbionts?)
+The underlying assumption is that the growth of the grain is dependent mainly on L.kefiranofaciens but to improve the argument, we can divide species in the grain into more important and less important species for grain growth. 
+
+#### Dominant species support evolutionary adaptation of communities 
+#### Gut microbiome evolution (and other assymetrical associations)
+#### Evolution of host-pathogen interaction
+#### Endosymbiosis
+#### Evolution of risobiome
+#### Tumor evolution
+#### Evolution of endosymbiosis
+#### Evolution of cells
+#### Evolution of multicellularity
+#### different type of microbial communities
+#### Phages and Kefir, Phages and tumors! 
+#### Evolution of parasites
+#### Modularity in biofilms
+#### Evolution of plasmids 
+#### Evolution of transposable elements. 
+#### Modularity and evolution of senescence
+1- https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2435.13486#:~:text=Modularity%20is%20expected%20to%20decrease,on%20the%20shape%20of%20senescence.&text=These%20changes%20may%20alter%20when,change%20the%20shape%20of%20senescence.
+2- https://www.cambridge.org/core/books/abs/evolution-of-senescence-in-the-tree-of-life/senescence-in-modular-animals/CE38D867C3A4B2F505693A6CB88B0C6E
+
+#### Unitary organisms evolve from modular organisms
+#### Eolution of multicellularity in fungi and role of 
+
+
+#### Unrelated to this essay: how diploidy wants to mask tumor mutations?
+don't we finally reach a similar mutation-selection balance regardless of ploidy-level. 
+
+#### interesting readings:
+1- Evolutionary Systems Biology - https://link.springer.com/book/10.1007%2F978-3-030-71737-7
+2- Systems Evolutionary Biology Biological Network Evolution Theory, Stochastic Evolutionary Game Strategies, and Applications to Systems Synthetic Biology
+Book • 2018
+https://www.sciencedirect.com/book/9780128140727/systems-evolutionary-biology
+
+
+
+
+
+
+ 
+
+
+
