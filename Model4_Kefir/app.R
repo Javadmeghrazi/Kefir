@@ -61,7 +61,6 @@ server <- function(input, output) {
     gl_0 = input$gl_0 
     s_rounds = input$s_rounds
     gr = input$gr
-    n = input$n
     mu = input$mu 
     mi = input$mi
     gen = input$gen
@@ -173,7 +172,7 @@ server <- function(input, output) {
       }
       mass [,i]= Growth_mat %*% selection_mat_final %*% drift_mut_mat %*% (matrix_exp(mig_mat,mi)) %*% mass [,i-1]
       freq [,i]= 100* mass [,i]/ sum(mass[,i])
-      mean_allele_f[i] = sum (freq[,i]*allele_f[])/gl
+      mean_allele_f[i] = sum (freq[,i]*allele_f[])/100
       
     }
     plot (allele_f,freq[,gen])

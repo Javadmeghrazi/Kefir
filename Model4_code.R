@@ -13,14 +13,14 @@ matrix_exp <- function(mat,n){
   matnew
 }
 #parameters
-gl = 101
+gl = 11
 wa = 1
-gl_0 = 51
+gl_0 = 6
 gr = 0
 s_rounds = 20
 mu = 0
 mi = 0
-gen = 1000
+gen = 100
 
 gr_0 = 1
 mass = matrix (0, gl, gen+1)
@@ -127,8 +127,9 @@ for (i in 2:gen){
   }
   mass [,i]= Growth_mat %*% selection_mat_final %*% drift_mut_mat %*% (matrix_exp(mig_mat,mi)) %*% mass [,i-1]
   freq [,i]= 100* mass [,i]/ sum(mass[,i])
-  mean_allele_f[i] = sum (freq[,i]*allele_f[])/gl
+  mean_allele_f[i] = sum (freq[,i]*allele_f[])/100
 
 }
-plot (allele_f,freq[,1000])
+plot (allele_f,freq[,3])
+
 
