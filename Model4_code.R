@@ -22,11 +22,15 @@ mu = 0
 mi = 0
 gen = 100
 
+kefir_patch_model = function (mat)
+
 gr_0 = 1
 mass = matrix (0, gl, gen+1)
 freq = matrix (0, gl, gen+1)
 allele_f = matrix (0, gl, 1)
+growth_rate = matrix (0, gl, 1)
 mean_allele_f = matrix (0, gen, 1)
+mean_growth = matrix (0, gen, 1)
 add_fit = matrix (0, gl, 1)
 drift_effect = matrix (0,gl,1)
 Growth_mat = matrix (0, gl, gl)
@@ -44,6 +48,7 @@ mean_allele_f[1]=allele_f[gl_0]
 # effect of group growth changes
 for (i in 1:gl) {
   Growth_mat [i,i] = gr_0 + (i-1)/(gl-1)*gr
+  growth_rate[i] = gr_0 + (i-1)/(gl-1)*gr
 }
 # effect of individual frequency changes in each grain due to natural selection
 #version 1
@@ -125,6 +130,7 @@ for (i in 2:gen){
   for (k in 1:mi){
     mig_mat_final = mig_mat_final %*% mig_mat
   }
+  mean_growth [i-1] = freq [,i-1]* growth_rate 
   mass [,i]= Growth_mat %*% selection_mat_final %*% drift_mut_mat %*% (matrix_exp(mig_mat,mi)) %*% mass [,i-1]
   freq [,i]= 100* mass [,i]/ sum(mass[,i])
   mean_allele_f[i] = sum (freq[,i]*allele_f[])/100
