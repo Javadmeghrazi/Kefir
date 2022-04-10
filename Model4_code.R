@@ -1,3 +1,4 @@
+# file updated on Dec 15 but not yet transferred to shiny app 
 #functions
 matrix_exp <- function(mat,n){
   if(!is.matrix(mat) | (nrow(mat)!=ncol(mat)) | n <0){
@@ -14,15 +15,14 @@ matrix_exp <- function(mat,n){
 }
 #parameters
 gl = 11
-wa = 1
-gl_0 = 6
-gr = 0
+wa = 0.9
+gl_0 = 10
+gr = 0.0
 s_rounds = 20
 mu = 0
 mi = 0
 gen = 100
 
-kefir_patch_model = function (mat)
 
 gr_0 = 1
 mass = matrix (0, gl, gen+1)
@@ -130,12 +130,11 @@ for (i in 2:gen){
   for (k in 1:mi){
     mig_mat_final = mig_mat_final %*% mig_mat
   }
-  mean_growth [i-1] = freq [,i-1]* growth_rate 
-  mass [,i]= Growth_mat %*% selection_mat_final %*% drift_mut_mat %*% (matrix_exp(mig_mat,mi)) %*% mass [,i-1]
-  freq [,i]= 100* mass [,i]/ sum(mass[,i])
+  mean_growth [i-1] = sum((freq [,i-1]/100)* growth_rate )
+  freq [,i]= (Growth_mat/mean_growth[i-1]) %*% selection_mat_final %*% drift_mut_mat %*% (matrix_exp(mig_mat,mi)) %*% freq [,i-1]
   mean_allele_f[i] = sum (freq[,i]*allele_f[])/100
 
 }
-plot (allele_f,freq[,3])
+plot (allele_f,freq[,gen])
 
 

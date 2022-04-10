@@ -18,7 +18,7 @@ Transition_p = matrix (0, 2000, 4)
 q =1
 colnames (Transition_p) = c("wa" , "gl", "f0", "fA" )
 # parameter space
-for (gl in seq(3,100,4)){
+for (gl in seq(3,15,1)){
   for(wa in seq (0.1,1,0.05)){
    # for (gr in seq(0,0.3,0.1)){
       
@@ -153,4 +153,14 @@ for (gl in seq(3,100,4)){
 }
 
 plot (Transition_p[,1],Transition_p[,4])
+Transition_p <- as.data.frame(Transition_p)
+
+Transition_p <- Transition_p %>% 
+  mutate (Kimura_fA = (1 - exp(2 * (gl-1) * (wa - 1) * (gl-2)/(gl-1)))/(1 - exp(2 * (gl-1) * (wa - 1) ))) %>% 
+  mutate (Kimura_fa = (1 - exp(2  * ((1 / wa) - 1))) / (1 - exp(2 * (gl-1) * ((1 / wa) - 1))))
+
+library ("ggplot2")
+ggplot (Transition_p, aes (x = wa , y = fA , color = gl))+
+  geom_point()
+
 
