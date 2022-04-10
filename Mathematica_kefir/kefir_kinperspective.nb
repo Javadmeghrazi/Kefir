@@ -1,0 +1,132 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3733,        122]
+NotebookOptionsPosition[      3343,        104]
+NotebookOutlinePosition[      3689,        119]
+CellTagsIndexPosition[      3646,        116]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Kefir inbreeding model\n", "Section"],
+ "I think if I look at a little bit longer time span, I can create a model \
+for drift similar to wright fisher model and then understanding the system \
+analytically would be much easier. I\[CloseCurlyQuote]m assuming that there \
+are an infinite number of groups with constant size (n) (still may be \
+applicable to the case of kefir if we are looking at a trait where only N \
+closest neighbors are important)"
+}], "Text",
+ CellChangeTimes->{{3.8578448341416674`*^9, 3.8578451120249405`*^9}, {
+  3.8578451805222206`*^9, 3.857845180585868*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"meanf", " ", "=", " ", 
+   RowBox[{"f", " ", "/.", 
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"f", " ", "==", " ", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"1", "/", "n"}], " ", "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"1", "/", "n"}]}], ")"}], "*", "f"}]}], ")"}], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "-", "mu"}], ")"}], "^", "2"}]}]}], "}"}], " ", ",", 
+      " ", 
+      RowBox[{"{", "f", "}"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"fullcoop", " ", "=", " ", 
+  RowBox[{"e", " ", "^", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "1"}], "*", "meanf"}], ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.857845143145996*^9, 3.857845303622692*^9}, {
+  3.8578453562406797`*^9, 3.857845406800408*^9}, {3.857845476665786*^9, 
+  3.857845518971009*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"-", 
+   FractionBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", "mu"}], ")"}], "2"], 
+    RowBox[{
+     RowBox[{"-", "1"}], "+", 
+     RowBox[{"2", " ", "mu"}], "-", 
+     SuperscriptBox["mu", "2"], "-", 
+     RowBox[{"2", " ", "mu", " ", "n"}], "+", 
+     RowBox[{
+      SuperscriptBox["mu", "2"], " ", "n"}]}]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.857845304435191*^9, {3.8578453963717637`*^9, 3.8578454077064586`*^9}, {
+   3.857845509515036*^9, 3.8578455196076527`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  SuperscriptBox["e", 
+   FractionBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", "mu"}], ")"}], "2"], 
+    RowBox[{
+     RowBox[{"-", "1"}], "+", 
+     RowBox[{"2", " ", "mu"}], "-", 
+     SuperscriptBox["mu", "2"], "-", 
+     RowBox[{"2", " ", "mu", " ", "n"}], "+", 
+     RowBox[{
+      SuperscriptBox["mu", "2"], " ", "n"}]}]]], "}"}]], "Output",
+ CellChangeTimes->{
+  3.857845304435191*^9, {3.8578453963717637`*^9, 3.8578454077064586`*^9}, {
+   3.857845509515036*^9, 3.8578455196232243`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1264, 661},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 612, 10, 74, "Text"],
+Cell[CellGroupData[{
+Cell[1195, 34, 994, 29, 66, "Input"],
+Cell[2192, 65, 563, 17, 49, "Output"],
+Cell[2758, 84, 569, 17, 52, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
