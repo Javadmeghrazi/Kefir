@@ -1,0 +1,87 @@
+---
+title: "Simulations"
+author: "Javad"
+date: "3/31/2022"
+output: html_document
+---
+```{r}
+library (tidyverse)
+library (ggplot2)
+```
+```{r setup, include=FALSE}
+# mu = mutation rate, mi= migration rate, gl = grain levels, gr = grain growth,  
+kefirPatch <- function (mu, gl, gr, r10, a, change){
+  gbar <- vector()
+  f0 <- vector(); f1 <- vector(); f2 <- vector()
+  f0[1] <- 0.05; f1[1] <- 0.9; f2[1] <- 0.05; g0 <- 1
+  i = 1
+  gbar[i] = f0[i]*g0 + f1[i]*(g0+gr*(gl-1)/gl) + f2[i]*(g0+gr)
+  f0 [i + 1] <- f0[i]*g0 / gbar [i] + a*r10*f1[i]
+  f1[i + 1] = f1[i] * (g0+gr*(gl-1)/gl) /gbar [i] + mu * gl *f2[i] - a*f1[i]
+  f2[i + 1] = f2[i]*(g0+gr)/gbar [i] - mu * f2[i] * gl + a*(1-r10)*f1[i]
+  
+  while ((abs(f0[i+1]-f0[i]) + abs(f2[i+1]-f2[i])) > change ) {
+    i = i+1
+    gbar[i] = f0[i]*g0 + f1[i]*(g0+gr*(gl-1)/gl) + f2[i]*(g0+gr)
+    f0 [i + 1] <- f0[i]*g0 / gbar [i] + a*r10*f1[i]
+    f1[i + 1] = f1[i] * (g0+gr*(gl-1)/gl) /gbar [i] + mu * gl *f2[i] - a*f1[i]
+    f2[i + 1] = f2[i]*(g0+gr)/gbar [i] - mu * f2[i] * gl + a*(1-r10)*f1[i]
+    
+  }
+  return (data.frame (f2_final = f2[i+1],generation = i))
+
+    
+}
+```
+```{r}
+parameters <- expand.grid(mu = seq (0, 0.001, 0.0001),
+                          gl = c(3, 5, 10, 20, 50, 100, 250, 500, 1000), # based on the results gl does not have any effect per se, even though it actually determines r10. I should incorporate it
+                          gr = seq (0, 0.03, 0.002), # the range is re adjusted based on the results
+                          a = seq (0.1), # based on the results a does not have any effect on the results. I don't know the real importance of this parameter when the system is more realistic.
+                          s = seq (0.02, 0.3, 0.02)) %>% 
+  mutate(r10 = (1-exp(-2*s))/(1-exp(-2*s*gl)))
+#fake <- data.frame(mu = 0.0001,gl = 15, gr = 0.02,a = 1,r10 = 0.5)
+#kefirPatch(mu = 0.001, gl = 105, gr = 0.02,a = 0.1,r10 = 0.5, change = 10^-6)
+
+results <- data.frame (f2_final = vector(), generation = vector())
+for (j in 1:length (parameters$mu)){
+  results[j,] <- kefirPatch(parameters$mu[j], parameters$gl[j],
+                                       parameters$gr[j], parameters$r10[j], parameters$a[j], change = 1e-6)
+  
+}
+
+parameters <- parameters %>% bind_cols(results)
+```
+```{r}
+ggplot (data = parameters, aes (x = mu , y = f2_final, color = gr))+
+  geom_point()+
+  facet_wrap(~gl)
+# results shows the bistable nature of the system. Either cooperators are the majority or cheaters
+ggplot (data = parameters  , aes (x = mu , y = f2_final, color = gr))+
+  geom_point()+
+  facet_wrap( ~ s)
+# the relationship between frequency of cooperators and mutation rate is linear
+ggplot (data = parameters , aes (x = mu , y = f2_final, color = r10))+
+  geom_point()+
+  facet_wrap(~gr)
+```
+
+```{r}
+ggplot (data = parameters %>% filter (gl == 3), aes (x = gr , y = f2_final, color = mu)) +
+  geom_point() +
+  facet_wrap(~s)
+```
+```{r}
+ggplot (data = parameters %>% filter (s == 0.1), aes (x = gr , y = f2_final, color = mu)) +
+  geom_point() +
+  facet_wrap(~gl)
+```
+```
+```{r}
+ggplot (data = parameters , aes (x = a , y = f2_final, color = gr))+
+  geom_point()+
+  facet_wrap(~s) 
+# a does not affet the results in this setting
+```
+
+An important question is to know if the abstract model is a good approximation of the main simulation? I should compare the results of simulations. 
